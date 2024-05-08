@@ -32,7 +32,7 @@ class TextBrowser(QTextBrowser):
 
     def downloadImage(self, url):
         try:
-            self.NetImages[url] = [QByteArray(requests.get(url.toString()).content), 1]
+            self.NetImages[url] = [QByteArray(requests.get(url.toString(), timeout=60).content), 1]
             print('下载完成', url)
         except Exception as e:
             print('下载失败', url, e)
